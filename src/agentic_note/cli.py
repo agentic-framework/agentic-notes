@@ -124,8 +124,8 @@ def process_command(args) -> int:
         return 1
     
     # Initialize the note manager
-    home_dir = os.path.expanduser("~")
-    storage_dir = os.path.join(home_dir, "Agentic", "shared", "notes")
+    agentic_home = os.environ.get("AGHOME", os.path.expanduser("~/Agentic"))
+    storage_dir = os.path.join(agentic_home, "shared", "notes")
     note_manager = NoteManager(storage_dir)
     
     # Execute the requested command

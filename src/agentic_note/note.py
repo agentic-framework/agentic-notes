@@ -68,8 +68,8 @@ class NoteManager:
     def __init__(self, storage_dir: Optional[Union[str, pathlib.Path]] = None):
         """Initialize the NoteManager with a storage directory."""
         if storage_dir is None:
-            home_dir = os.path.expanduser("~")
-            storage_dir = os.path.join(home_dir, "Agentic", "shared", "notes")
+            agentic_home = os.environ.get("AGHOME", os.path.expanduser("~/Agentic"))
+            storage_dir = os.path.join(agentic_home, "shared", "notes")
             
         self.storage_dir = pathlib.Path(storage_dir)
         self.storage_dir.mkdir(parents=True, exist_ok=True)
