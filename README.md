@@ -32,34 +32,39 @@ This will install the `ag-note` command-line tool.
 
 ## Usage
 
+The `agentic-note` tool can be used in two ways:
+
+1. As a standalone command: `ag-note`
+2. As a subcommand of the Agentic framework: `ag note`
+
 ### Creating a Note
 
 ```bash
-ag-note create "Note Title" "Note content goes here" --tags tag1,tag2
+ag note create "Note Title" "Note content goes here" --tags tag1,tag2
 ```
 
 ### Listing Notes
 
 List all notes:
 ```bash
-ag-note list
+ag note list
 ```
 
 List notes with a specific tag:
 ```bash
-ag-note list --tag tag1
+ag note list --tag tag1
 ```
 
 ### Viewing a Note
 
 ```bash
-ag-note view note-id
+ag note view note-id
 ```
 
 ### Updating a Note
 
 ```bash
-ag-note update note-id --title "New Title" --content "New content" --tags tag1,tag3
+ag note update note-id --title "New Title" --content "New content" --tags tag1,tag3
 ```
 
 You can update any combination of title, content, and tags.
@@ -67,13 +72,13 @@ You can update any combination of title, content, and tags.
 ### Deleting a Note
 
 ```bash
-ag-note delete note-id
+ag note delete note-id
 ```
 
 ### Searching Notes
 
 ```bash
-ag-note search "query"
+ag note search "query"
 ```
 
 ## Storage

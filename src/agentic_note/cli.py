@@ -19,25 +19,25 @@ def create_parser() -> argparse.ArgumentParser:
         epilog=textwrap.dedent("""
         Examples:
           # Create a new note
-          ag-note create "Note Title" "Note content goes here" --tags tag1,tag2
+          ag note create "Note Title" "Note content goes here" --tags tag1,tag2
           
           # List all notes
-          ag-note list
+          ag note list
           
           # List notes with a specific tag
-          ag-note list --tag tag1
+          ag note list --tag tag1
           
           # View a note
-          ag-note view note-id
+          ag note view note-id
           
           # Update a note
-          ag-note update note-id --title "New Title" --content "New content" --tags tag1,tag3
+          ag note update note-id --title "New Title" --content "New content" --tags tag1,tag3
           
           # Delete a note
-          ag-note delete note-id
+          ag note delete note-id
           
           # Search notes
-          ag-note search "query"
+          ag note search "query"
         """)
     )
     
@@ -117,13 +117,10 @@ def format_note(note) -> str:
     return "\n".join(result)
 
 
-def main() -> int:
-    """Main entry point for the CLI."""
-    parser = create_parser()
-    args = parser.parse_args()
-    
+def process_command(args) -> int:
+    """Process the command with the given arguments."""
     if not args.command:
-        parser.print_help()
+        create_parser().print_help()
         return 1
     
     # Initialize the note manager
@@ -182,6 +179,27 @@ def main() -> int:
             return 0
     
     return 1
+
+
+def main() -> int:
+    """Main entry point for the CLI."""
+    parser = create_parser()
+    args = parser.parse_args()
+    return process_command(args)
+
+
+def note_command() -> int:
+    """
+    Entry point for the 'ag note' command.
+    
+    This function follows the command interface for agentic-core plugins:
+    1. Takes no arguments (it parses sys.argv directly)
+    2. Returns an integer exit code (0 for success, non-zero for failure)
+    3. Handles its own argument parsing
+    """
+    parser = create_parser()
+    args = parser.parse_args(sys.argv[1:])
+    return process_command(args)
 
 
 if __name__ == "__main__":

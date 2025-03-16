@@ -24,6 +24,9 @@ dependencies = [
 [project.scripts]
 ag-note = "agentic_note.cli:main"
 
+[project.entry-points."agentic.commands"]
+note = "agentic_note.cli:note_command"
+
 [project.urls]
 "Homepage" = "https://github.com/username/agentic-note"
 "Bug Tracker" = "https://github.com/username/agentic-note/issues"
