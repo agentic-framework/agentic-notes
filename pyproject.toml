@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic_note"
+version = "0.1.0"
+description = "Agent's notebook - Provides note-taking capabilities for the agent"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Author Name", email = "author@example.com"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "argparse",
+]
+
+[project.scripts]
+ag-note = "agentic_note.cli:main"
+
+[project.urls]
+"Homepage" = "https://github.com/username/agentic-note"
+"Bug Tracker" = "https://github.com/username/agentic-note/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+select = ["E", "F", "B", "I"]
+ignore = []
+
+[tool.ruff.isort]
+known-first-party = ["agentic_note"]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
